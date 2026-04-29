@@ -9,7 +9,10 @@
 -- Hint: Filter rows where name = 'Queensboro Brg'
 
 -- TODO: Write your query below
-
+SELECT
+    ST_AsText(geom) AS queensboro
+FROM nyc_streets
+WHERE name= 'Queensboro Brg';
 
 
 
@@ -24,6 +27,16 @@
 -- Hint: Use the SQL query from Exercise 1 to get the geometry of Queensboro Brg in the WHERE clause
 
 -- TODO: Write your query below
+SELECT 
+    n.name AS neighborhood,
+    n.boroname AS borough
+FROM nyc_neighborhoods n
+WHERE ST_Intersects(
+    n.geom,
+    (SELECT geom 
+     FROM nyc_streets 
+     WHERE name = 'Queensboro Brg')
+);
 
 
 
@@ -42,8 +55,17 @@
 -- Hint: Exclude NULL street names using name IS NOT NULL in the WHERE clause
 
 -- TODO: Write your query below
-
-
+SELECT 
+    s.name
+FROM nyc_streets s
+WHERE ST_Intersects(
+    s.geom,
+    (SELECT geom 
+     FROM nyc_streets 
+     WHERE name = 'Queensboro Brg')
+)
+AND s.name IS NOT NULL
+AND s.name != 'Queensboro Brg';
 
 
 -- Exercise 4: Approximately how many people live within 50 meters of Queensboro Brg?
@@ -57,6 +79,15 @@
 -- Hint: Use the SQL query from Exercise 1 to get the geometry of Queensboro Brg in the WHERE clause
 
 -- TODO: Write your query below
-
+SELECT
+    SUM(c.popn_total) AS total_population
+FROM nyc_census_blocks c
+WHERE ST_DWithin(
+    c.geom,
+    (SELECT geom 
+     FROM nyc_streets 
+     WHERE name = 'Queensboro Brg'),
+    50
+);
 
 
