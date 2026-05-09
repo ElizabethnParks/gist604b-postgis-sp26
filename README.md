@@ -1,6 +1,27 @@
-# GIST 604B – PostGIS
+# [PostGIS Database Orchestration]
 
-Repository for working with spatial data using PostgreSQL and PostGIS.
+**Student:** [Elizabeth Parks]
+**Course:** GIST 604B – Open Source GIS
+**Module:** [MODULE #4 PostGIS Database Orchestration]
+**University of Arizona**
+
+## Project Description
+This project focused on building and working woth a PostGIS-enabled PostgreSQL database environment for spatial data analysis using docker. I imported and managed real-world spatial datasets, wrote SQL queries to perform geometry operations, spatial relationships, and multi-table spatial joins across several structured SQL exercises.
+
+## Tools and Technologies
+- PostgreSQL with PostGIS
+- Docker containers
+- SQL functions
+
+## What I Did
+- Setup the PostGIS environment.
+- Download, unzip, and import data.
+- complete and create my own sql, geometry, spatial relationship, and spatial join queries.
+- Test queries.
+
+## How to View / Run
+- Use docker to setup the database environment.
+- Run the sql scripts in the sql/ directory.
 
 ## Repository Structure
 
